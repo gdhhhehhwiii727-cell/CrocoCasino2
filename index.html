@@ -4,86 +4,60 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#07130e">
-  <title>CROCO CASINO</title>
+  <title>مملكة تمساحي</title>
   <style>
-    :root{--gold:#f3ca70;--gold-light:#ffe7a1;--green:#35c56b;--text:#fffaf0}
+    :root{--gold:#f7cf68;--green:#59cd7a;--text:#fffaf0}
     *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
     html,body{width:100%;height:100%;margin:0;overflow:hidden}
-    body{display:flex;justify-content:center;align-items:flex-start;font-family:Tahoma,Arial,sans-serif;color:var(--text);background:radial-gradient(circle at 50% -10%,#2e6744 0,transparent 36%),radial-gradient(circle at 0 90%,#45202a 0,transparent 35%),linear-gradient(145deg,#0b1c12,#020503)}
+    body{display:flex;justify-content:center;align-items:flex-start;font-family:Tahoma,Arial,sans-serif;color:var(--text);background:linear-gradient(160deg,#173c28,#07140e 58%,#160d10)}
     button{font:inherit;cursor:pointer}
-    .app{width:1080px;height:1920px;min-height:1920px;margin:0 auto;padding:24px 20px 48px;transform-origin:top center}
-    .topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:145px;padding:20px 24px;border:2px solid #ffffff18;border-radius:36px;background:#09170fe8;box-shadow:0 24px 70px #0007}
-    .brand{display:flex;align-items:center;gap:18px;min-width:0}
-    .logo{display:grid;width:108px;height:108px;flex:0 0 108px;place-items:center;border:4px solid var(--gold);border-radius:32px;background:linear-gradient(135deg,#45c76d 53%,#b92a3a 54%);font-size:62px;filter:drop-shadow(0 0 20px #35c56b55)}
-    .brand-name{color:var(--gold);font-size:32px;font-weight:900;letter-spacing:1px;white-space:nowrap}.brand-sub{display:block;margin-top:8px;color:#b5cbbd;font-size:18px;letter-spacing:4px}
-    .points{flex:0 0 auto;padding:18px 22px;border:2px solid #f3ca7055;border-radius:26px;background:#ffffff0a;color:var(--gold-light);direction:ltr;font-size:26px;white-space:nowrap}.points b{color:#fff;font-size:34px}
-    .heading{padding:34px 8px 26px;text-align:center}.heading small{color:#a9d5b3;font-size:20px;letter-spacing:6px}.heading h1{margin:10px 0 0;color:var(--gold);font-size:74px;text-shadow:0 0 48px #f3ca7048}
-    .machine{position:relative;padding:26px;border:4px solid #cba64e;border-radius:48px;background:linear-gradient(145deg,#21482f,#0a170f);box-shadow:0 36px 90px #0009,inset 0 0 56px #f3ca7012;overflow:hidden}
-    .machine-title{margin:0 0 20px;color:var(--gold-light);font-size:20px;font-weight:700;letter-spacing:6px;text-align:center}
-    .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;direction:ltr}
-    .cell{display:flex;aspect-ratio:.82;flex-direction:column;align-items:center;justify-content:center;gap:6px;overflow:hidden;border:2px solid #f3ca7044;border-radius:24px;background:radial-gradient(circle at 50% 25%,#ffffff18,transparent 45%),linear-gradient(145deg,#2a4d36,#09150f);box-shadow:inset 0 0 28px #0008,0 6px 16px #0005}
-    .cell .icon{display:block;width:108px;height:108px;max-width:92%;max-height:70%;filter:drop-shadow(0 10px 14px #000b)}
-    .cell .label{color:#cdded1;font-size:18px;font-weight:700}
-    .cell.spinning{animation:tumble .12s linear infinite;filter:blur(1px)}.cell.winner{z-index:1;border-color:var(--gold-light);animation:winner .5s ease-in-out infinite alternate}
-    .controls{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;margin-top:32px}
-    .bet-control{display:flex;align-items:center;justify-content:space-between;padding:12px;border:2px solid #ffffff20;border-radius:28px;background:#ffffff0a}.bet-control button{width:68px;height:68px;border:0;border-radius:20px;color:var(--gold-light);background:#ffffff12;font-size:40px}
-    .bet-value{min-width:96px;text-align:center}.bet-value b{display:block;font-size:30px}.bet-value small{color:#a9bcae;font-size:18px}
-    .spin-button{min-width:250px;padding:26px 24px;border:2px solid #ffe6a1;border-radius:30px;color:#281a05;background:linear-gradient(#ffe69a,#cf9435);box-shadow:0 10px 0 #805315,0 20px 44px #cf943538;font-size:32px;font-weight:900}.spin-button:active:not(:disabled){transform:translateY(6px);box-shadow:0 4px 0 #805315}.spin-button:disabled{cursor:wait;opacity:.65}
-    .max-button{height:96px;border:2px solid #35c56b66;border-radius:28px;color:#bcecc9;background:#1b673730;font-size:24px;font-weight:800}
-    .message{min-height:100px;padding:28px 10px 10px;color:var(--gold-light);font-size:28px;font-weight:700;text-align:center}
-    .paytable{margin-top:16px;padding:24px;border:2px solid #ffffff18;border-radius:32px;background:#ffffff08}.paytable h2{margin:0 0 18px;color:var(--gold);font-size:28px}.pay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.pay-item{padding:16px 6px;border-radius:18px;background:#0003;color:#d7e4da;font-size:18px;text-align:center}.pay-item strong{display:block;margin-bottom:6px;font-size:36px}
-    .notice{margin:24px 8px 0;color:#94a89a;font-size:18px;line-height:1.7;text-align:center}
-    @keyframes tumble{0%{transform:translateY(-12px)}50%{transform:translateY(12px)}100%{transform:translateY(-12px)}}@keyframes winner{to{transform:scale(1.06);box-shadow:0 0 36px #f3ca70aa,inset 0 0 28px #f3ca7040}}
-    @media(prefers-reduced-motion:reduce){.cell{animation:none!important}}
+    .app{position:relative;width:1080px;height:1920px;padding:40px 50px 60px;overflow:hidden;background:radial-gradient(circle at 50% 26%,#316d48 0,#183b29 32%,transparent 58%),linear-gradient(145deg,#173b28,#07140e);transform-origin:top center}
+    .topbar{display:flex;align-items:center;justify-content:space-between;height:150px;padding:22px 28px;border:3px solid #ffffff1c;border-radius:44px;background:#08150fcc;box-shadow:0 20px 60px #0008}
+    .brand{display:flex;align-items:center;gap:22px}.logo{display:grid;width:104px;height:104px;place-items:center;border:4px solid var(--gold);border-radius:32px;background:linear-gradient(135deg,#67d58a,#22613a);font-size:64px}.name{color:var(--gold);font-size:38px;font-weight:900}.sub{margin-top:8px;color:#b7cfbe;font-size:20px;letter-spacing:4px}
+    .score{direction:ltr;padding:18px 24px;border:3px solid #f3ca704a;border-radius:28px;background:#ffffff0d;color:#e1ebdf;font-size:30px}.score b{color:white;font-size:44px}
+    .arena{position:relative;height:1270px;margin-top:36px;overflow:hidden;border:4px solid #dabd64;border-radius:52px;background:radial-gradient(circle at 50% 35%,#56895b 0,#224730 28%,#10251a 75%),linear-gradient(45deg,#1a3b28,#0b1b12);box-shadow:0 30px 90px #0009,inset 0 0 80px #f3ca7017}
+    .arena:before{content:"";position:absolute;inset:-30%;opacity:.11;background-image:linear-gradient(30deg,#fff 1px,transparent 1px),linear-gradient(-30deg,#fff 1px,transparent 1px);background-size:100px 100px}
+    .stage-label{position:absolute;top:30px;right:38px;z-index:3;color:#dfd0a2;font-size:22px;letter-spacing:3px}
+    .croc{position:absolute;z-index:4;display:grid;place-items:center;width:170px;height:170px;border:5px solid #9be0a8;border-radius:50px;font-size:118px;background:radial-gradient(circle at 38% 28%,#74d68e,#2f7747 70%,#19452d);box-shadow:0 22px 30px #0009,0 0 32px #67d68b55;transition:left .08s linear,top .08s linear}
+    .item{position:absolute;z-index:3;display:grid;place-items:center;width:120px;height:120px;border:4px solid #fff0aa;border-radius:50%;font-size:76px;background:radial-gradient(circle,#ffe998,#d29b36 67%,#7b5419);box-shadow:0 16px 28px #0009,0 0 38px #ffd66b88;animation:pulse 1s ease-in-out infinite alternate}
+    .spark{position:absolute;z-index:2;width:8px;height:8px;border-radius:50%;background:#fff3a5;box-shadow:0 0 18px #ffe66d;animation:float 2.8s linear infinite}
+    .controls{display:grid;grid-template-columns:repeat(3,170px);grid-template-rows:repeat(3,170px);justify-content:center;gap:16px;margin-top:28px}
+    .controls button{border:3px solid #ffffff24;border-radius:40px;color:#dfffe9;background:linear-gradient(145deg,#2a6443,#12291d);box-shadow:0 10px 0 #08120d,0 18px 38px #0007;font-size:64px}.controls button:active{transform:translateY(7px);box-shadow:0 3px 0 #08120d}
+    .controls button.up{grid-column:2}.controls button.left{grid-row:2;grid-column:1}.controls button.down{grid-row:2;grid-column:2}.controls button.right{grid-row:2;grid-column:3}.controls button.start{grid-row:3;grid-column:2;font-size:28px;color:#241905;border:3px solid #fff0aa;background:linear-gradient(#ffe99b,#ce9435);box-shadow:0 10px 0 #795213}
+    .message{position:absolute;right:50px;bottom:28px;left:50px;text-align:center;color:var(--gold);font-size:30px;font-weight:900;text-shadow:0 4px 12px #000}
+    @keyframes pulse{to{transform:scale(1.08);filter:brightness(1.15)}}@keyframes float{to{transform:translateY(-120px) rotate(360deg);opacity:0}}
   </style>
 </head>
 <body>
-  <main class="app">
+  <main class="app" id="app">
     <header class="topbar">
-      <div class="brand"><div class="logo" aria-hidden="true">🐊</div><div><div class="brand-name">CROCO CASINO</div><span class="brand-sub">لعبة نقاط ترفيهية</span></div></div>
-      <div class="points">⭐ <b id="points">1000</b> نقطة</div>
+      <div class="brand"><div class="logo">🐊</div><div><div class="name">مملكة تمساحي</div><div class="sub">لعبة مغامرة نقاط</div></div></div>
+      <div class="score">النقاط: <b id="score">0</b></div>
     </header>
-    <section class="heading"><small>لعبة نقاط مجانية</small><h1>🌳 الشجرة الذهبية</h1></section>
-    <section class="machine" id="machine"><p class="machine-title">✦ THE GOLDEN TREE ✦</p><div class="grid" id="grid" aria-label="شبكة اللعبة"></div></section>
-    <section class="controls"><div class="bet-control"><button id="downBet" type="button" aria-label="تقليل الرهان">−</button><div class="bet-value"><b id="bet">10</b><small>نقاط/خط</small></div><button id="upBet" type="button" aria-label="زيادة الرهان">+</button></div><button class="spin-button" id="spin" type="button">لفّ البكرات</button><button class="max-button" id="maxBet" type="button">أعلى رهان</button></section>
-    <div class="message" id="message" aria-live="polite">تكلفة الجولة: 50 نقطة</div>
-    <section class="paytable"><h2>جدول الرموز</h2><div class="pay-grid"><div class="pay-item"><strong>🌳</strong>Wild — بديل</div><div class="pay-item"><strong>🏮</strong>Scatter — مكافأة</div><div class="pay-item"><strong>🪙</strong>عملة ذهبية</div><div class="pay-item"><strong>🐸</strong>ضفدع</div><div class="pay-item"><strong>🦅</strong>طائر</div><div class="pay-item"><strong>🌿</strong>غصن زيتون</div></div></section>
-    <p class="notice">هذه نسخة ترفيهية بنقاط افتراضية محفوظة على هذا الجهاز فقط. لا توجد إيداعات أو سحوبات أو جوائز مالية.</p>
+    <section class="arena" id="arena"><div class="stage-label">المستنقع الذهبي</div><div class="croc" id="croc">🐊</div></section>
+    <nav class="controls" aria-label="أزرار الحركة">
+      <button class="up" data-dir="up" type="button">▲</button>
+      <button class="left" data-dir="left" type="button">◀</button>
+      <button class="down" data-dir="down" type="button">▼</button>
+      <button class="right" data-dir="right" type="button">▶</button>
+      <button class="start" id="start" type="button">ابدأ التحدي</button>
+    </nav>
+    <div class="message" id="message">اجمع العملات الذهبية قبل انتهاء الوقت</div>
   </main>
 <script>
 "use strict";
-const START_POINTS=1000,MIN_BET=10,MAX_BET=100,BET_STEP=10,STORAGE_KEY="croco-casino-points";
-const symbols={
-TEN:{label:"10",weight:12,pays:{3:2,4:5,5:12},art:'<path d="M22 30h12v38H22zm38 0h14v38H60z" fill="#ffe7a1"/><path d="M39 31h15v12H39zm0 14h15v12H39zm0 13h15v10H39z" fill="#f3ca70"/>'},
-JACK:{label:"J",weight:12,pays:{3:2,4:5,5:12},art:'<path d="M28 25h42v48H28z" rx="5" fill="#f6e5bb"/><path d="M58 34v24q0 12-13 12-7 0-12-5l7-8q2 3 5 3 4 0 4-5V34z" fill="#315d3c"/><path d="M28 25h42v7H28z" fill="#d5a843"/>'},
-QUEEN:{label:"Q",weight:11,pays:{3:3,4:7,5:18},art:'<path d="M25 38l12 10 11-21 11 21 12-10-5 25H30z" fill="#f3ca70" stroke="#fff0b5" stroke-width="3"/><path d="M31 68h40v7H31z" fill="#ffe7a1"/><circle cx="37" cy="39" r="3" fill="#fff"/><circle cx="48" cy="30" r="3" fill="#fff"/><circle cx="60" cy="39" r="3" fill="#fff"/>'},
-KING:{label:"K",weight:10,pays:{3:3,4:8,5:20},art:'<path d="M28 34h40v34H28z" fill="#c54740" stroke="#ffe7a1" stroke-width="3"/><path d="M32 36l10 9 7-15 7 15 10-9-4 18H36z" fill="#f3ca70"/><path d="M48 51v15m-8-8h16" stroke="#fff0b5" stroke-width="4" stroke-linecap="round"/><circle cx="48" cy="28" r="4" fill="#ffe7a1"/>'},
-ACE:{label:"A",weight:9,pays:{3:4,4:10,5:25},art:'<path d="M48 20L72 48 48 76 24 48z" fill="#6de0d1" stroke="#dcfff5" stroke-width="4"/><path d="M48 27v42L30 48z" fill="#b5fff0"/><path d="M48 27l18 21-18 21z" fill="#3a9dba"/><path d="M30 48h36" stroke="#eaffff" stroke-width="2"/>'},
-OLIVE:{label:"غصن",weight:8,pays:{3:5,4:15,5:40},art:'<path d="M27 68Q47 52 68 27" fill="none" stroke="#a8793e" stroke-width="4" stroke-linecap="round"/><g fill="#76c66d" stroke="#d5f09b" stroke-width="1.5"><ellipse cx="34" cy="55" rx="10" ry="5" transform="rotate(28 34 55)"/><ellipse cx="43" cy="48" rx="10" ry="5" transform="rotate(-35 43 48)"/><ellipse cx="51" cy="39" rx="10" ry="5" transform="rotate(28 51 39)"/><ellipse cx="59" cy="32" rx="9" ry="5" transform="rotate(-35 59 32)"/><ellipse cx="32" cy="64" rx="9" ry="5" transform="rotate(-30 32 64)"/></g><ellipse cx="70" cy="25" rx="5" ry="8" fill="#9a7338" transform="rotate(30 70 25)"/>'},
-FROG:{label:"ضفدع",weight:7,pays:{3:6,4:20,5:55},art:'<ellipse cx="48" cy="53" rx="26" ry="20" fill="#69ce68" stroke="#c5ff9b" stroke-width="3"/><circle cx="36" cy="34" r="10" fill="#69ce68"/><circle cx="60" cy="34" r="10" fill="#69ce68"/><circle cx="37" cy="34" r="4" fill="#fff"/><circle cx="59" cy="34" r="4" fill="#fff"/><circle cx="38" cy="34" r="2" fill="#14251a"/><circle cx="58" cy="34" r="2" fill="#14251a"/><path d="M37 57q11 10 22 0" fill="none" stroke="#245b32" stroke-width="3" stroke-linecap="round"/><ellipse cx="29" cy="69" rx="10" ry="5" fill="#49ad57"/><ellipse cx="67" cy="69" rx="10" ry="5" fill="#49ad57"/>'},
-COIN:{label:"عملة",weight:6,pays:{3:8,4:25,5:75},art:'<circle cx="48" cy="48" r="29" fill="#bd8128" stroke="#ffe38a" stroke-width="4"/><circle cx="48" cy="48" r="22" fill="#efbd48" stroke="#fff0a8" stroke-width="2"/><path d="M55 35q-4-5-10-3-7 2-4 8 2 4 9 6 8 2 7 8-2 7-11 7-6 0-10-5m12-29v41" fill="none" stroke="#8a5a1d" stroke-width="4" stroke-linecap="round"/><path d="M24 48h5m38 0h5" stroke="#fff1ae" stroke-width="2"/>'},
-BIRD:{label:"طائر",weight:5,pays:{3:10,4:35,5:100},art:'<path d="M18 57q18-4 25-27 4 13 14 15 8-10 21-8-7 7-8 15 4 12-10 20-16 8-32-3z" fill="#d9e7ec" stroke="#fff" stroke-width="2"/><path d="M24 54q17-3 25-18-1 14 13 21-17-2-29 8z" fill="#6d9db3"/><path d="M67 43l15 5-15 5z" fill="#f3b84e"/><circle cx="62" cy="43" r="2.5" fill="#17251c"/><path d="M42 70l-3 6m14-7 1 7" stroke="#e4b04d" stroke-width="3"/>'},
-WILD:{label:"Wild",weight:4,pays:{3:10,4:40,5:150},art:'<path d="M44 47h9v29h-9z" fill="#9a6337"/><path d="M48 17L26 43h12L23 57h18l-7 10h29l-7-10h18L62 43h11z" fill="#42b95c" stroke="#b6f27d" stroke-width="3" stroke-linejoin="round"/><circle cx="48" cy="37" r="4" fill="#ffe58a"/>'},
-SCATTER:{label:"Scatter",weight:4,pays:{},art:'<path d="M35 28h26l-3 10H38z" fill="#efbb4b" stroke="#fff0a1" stroke-width="2"/><path d="M39 38h18l5 28q-14 12-28 0z" fill="#d64f3f" stroke="#ffe7a1" stroke-width="3"/><path d="M42 47h12v14H42z" fill="#ffdf75"/><path d="M48 20v8m-14-4 5 6m23-6-5 6" stroke="#fff1ad" stroke-width="3" stroke-linecap="round"/><path d="M40 69h16" stroke="#fff0a1" stroke-width="3"/>'}
-};
-function iconSvg(key){const art=symbols[key].art;return `<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 96 96"><defs><radialGradient id="bg"><stop stop-color="#426b45"/><stop offset="1" stop-color="#14271a"/></radialGradient></defs><circle cx="48" cy="48" r="43" fill="url(#bg)" stroke="#f3ca70" stroke-width="2"/><circle cx="48" cy="48" r="37" fill="none" stroke="#ffffff30" stroke-width="1"/>${art}</svg>`}
-const paylines=[[0,0,0,0,0],[1,1,1,1,1],[2,2,2,2,2],[0,1,2,1,0],[2,1,0,1,2]];
-const gridNode=document.getElementById("grid"),pointsNode=document.getElementById("points"),betNode=document.getElementById("bet"),messageNode=document.getElementById("message"),spinButton=document.getElementById("spin");
-let points=loadPoints(),bet=MIN_BET,busy=false;
-function loadPoints(){try{const saved=Number(localStorage.getItem(STORAGE_KEY));return Number.isSafeInteger(saved)&&saved>=0?saved:START_POINTS}catch{return START_POINTS}}
-function savePoints(){try{localStorage.setItem(STORAGE_KEY,String(points))}catch{}}
-function updateDisplay(){pointsNode.textContent=points.toLocaleString("ar");betNode.textContent=bet.toLocaleString("ar");savePoints()}
-function randomSymbol(){const entries=Object.entries(symbols),total=entries.reduce((sum,[,data])=>sum+data.weight,0);let choice=Math.random()*total;for(const [key,data] of entries){choice-=data.weight;if(choice<0)return key}return entries[0][0]}
-function createGrid(){return Array.from({length:3},()=>Array.from({length:5},randomSymbol))}
-function drawGrid(grid){gridNode.replaceChildren();for(let row=0;row<3;row++)for(let column=0;column<5;column++){const key=grid[row][column],data=symbols[key],cell=document.createElement("div"),icon=document.createElement("img"),label=document.createElement("span");cell.className="cell";icon.className="icon";icon.alt=data.label;icon.width=1080;icon.height=1080;icon.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(iconSvg(key));label.className="label";label.textContent=data.label;cell.append(icon,label);gridNode.appendChild(cell)}}
-function evaluateLine(line,grid,lineBet){const lineSymbols=line.map((row,column)=>grid[row][column]),target=lineSymbols.find(key=>key!=="WILD"&&key!=="SCATTER");if(!target)return{win:0,positions:[]};let count=0;for(const key of lineSymbols){if(key===target||key==="WILD")count++;else break}const multiplier=symbols[target].pays[count]||0;if(!multiplier)return{win:0,positions:[]};return{win:lineBet*multiplier,positions:line.slice(0,count).map((row,column)=>row*5+column)}}
-function evaluateGrid(grid,lineBet){let total=0;const positions=new Set();let lines=0;for(const line of paylines){const result=evaluateLine(line,grid,lineBet);if(result.win>0){total+=result.win;lines++;result.positions.forEach(position=>positions.add(position))}}const scatterCount=grid.flat().filter(key=>key==="SCATTER").length,scatterBonus=scatterCount>=3?lineBet*scatterCount*2:0;total+=scatterBonus;return{total,positions,lines,scatterBonus}}
-function highlightPositions(positions){for(const position of positions)gridNode.children[position]?.classList.add("winner")}
-const wait=milliseconds=>new Promise(resolve=>setTimeout(resolve,milliseconds));
-async function spin(){if(busy)return;const cost=bet*paylines.length;if(points<cost){messageNode.textContent=`النقاط غير كافية. تحتاج ${cost} نقطة على الأقل.`;return}busy=true;spinButton.disabled=true;points-=cost;updateDisplay();messageNode.textContent=`جاري التدوير... تكلفة الجولة ${cost} نقطة`;drawGrid(createGrid());[...gridNode.children].forEach(cell=>cell.classList.add("spinning"));await wait(900);const finalGrid=createGrid();drawGrid(finalGrid);const result=evaluateGrid(finalGrid,bet);highlightPositions(result.positions);if(result.total>0){points+=result.total;let details="";if(result.lines>0)details+=` — خطوط رابحة: ${result.lines}`;if(result.scatterBonus>0)details+=` — Scatter: ${result.scatterBonus}`;messageNode.textContent=`🎉 ربحت ${result.total} نقطة${details}`}else messageNode.textContent="لم تظهر توليفة رابحة هذه المرة";updateDisplay();spinButton.disabled=false;busy=false}
-document.getElementById("downBet").addEventListener("click",()=>{if(busy)return;bet=Math.max(MIN_BET,bet-BET_STEP);updateDisplay();messageNode.textContent=`تكلفة الجولة: ${bet*paylines.length} نقطة`});document.getElementById("upBet").addEventListener("click",()=>{if(busy)return;bet=Math.min(MAX_BET,bet+BET_STEP);updateDisplay();messageNode.textContent=`تكلفة الجولة: ${bet*paylines.length} نقطة`});document.getElementById("maxBet").addEventListener("click",()=>{if(busy)return;bet=MAX_BET;updateDisplay();messageNode.textContent=`أعلى رهان — تكلفة الجولة: ${bet*paylines.length} نقطة`});spinButton.addEventListener("click",spin);drawGrid(createGrid());updateDisplay();
-function fitCanvas(){const app=document.querySelector('.app');const scale=Math.min(window.innerWidth/1080,window.innerHeight/1920);app.style.transform=`scale(${scale})`;app.style.marginLeft=`${Math.max(0,(window.innerWidth-1080*scale)/2)}px`;app.style.marginTop='0'}
-window.addEventListener('resize',fitCanvas);fitCanvas();
+const app=document.getElementById("app"),arena=document.getElementById("arena"),croc=document.getElementById("croc"),scoreNode=document.getElementById("score"),message=document.getElementById("message");
+let crocX=455,crocY=550,score=0,seconds=45,running=false,timer=null,item=null,sparks=[];
+function fit(){const scale=Math.min(innerWidth/1080,innerHeight/1920);app.style.transform=`scale(${scale})`;app.style.marginLeft=`${Math.max(0,(innerWidth-1080*scale)/2)}px`;app.style.position='relative'}
+function placeCroc(){croc.style.left=crocX+"px";croc.style.top=crocY+"px"}
+function createItem(){if(item)item.remove();item=document.createElement("div");item.className="item";item.textContent=["🪙","💎","⭐","🍀"][Math.floor(Math.random()*4)];item.style.left=Math.floor(40+Math.random()*870)+"px";item.style.top=Math.floor(100+Math.random()*1000)+"px";arena.appendChild(item)}
+function createSparks(){sparks.forEach(s=>s.remove());sparks=[];for(let i=0;i<18;i++){const s=document.createElement("i");s.className="spark";s.style.left=Math.floor(Math.random()*1060)+"px";s.style.bottom=Math.floor(Math.random()*280)+"px";s.style.animationDelay=(Math.random()*2)+"s";arena.appendChild(s);sparks.push(s)}}
+function move(dir){if(!running)return;const step=55;if(dir==="up")crocY-=step;if(dir==="down")crocY+=step;if(dir==="left")crocX-=step;if(dir==="right")crocX+=step;crocX=Math.max(20,Math.min(890,crocX));crocY=Math.max(100,Math.min(1080,crocY));placeCroc();checkItem()}
+function checkItem(){const ix=parseFloat(item.style.left),iy=parseFloat(item.style.top);if(Math.abs(crocX-ix)<120&&Math.abs(crocY-iy)<120){score+=10;scoreNode.textContent=score;message.textContent="رائع! جمعت "+(score)+" نقطة";createItem()}}
+function start(){clearInterval(timer);score=0;seconds=45;running=true;scoreNode.textContent="0";crocX=455;crocY=550;placeCroc();createItem();createSparks();message.textContent="الوقت المتبقي: 45 ثانية";timer=setInterval(()=>{seconds--;message.textContent="الوقت المتبقي: "+seconds+" ثانية";if(seconds<=0){clearInterval(timer);running=false;message.textContent="انتهى التحدي — مجموعك "+score+" نقطة"}},1000)}
+document.querySelectorAll("[data-dir]").forEach(b=>b.addEventListener("click",()=>move(b.dataset.dir)));document.getElementById("start").addEventListener("click",start);
+window.addEventListener("keydown",e=>{const keys={ArrowUp:"up",ArrowDown:"down",ArrowLeft:"left",ArrowRight:"right",w:"up",s:"down",a:"left",d:"right"};if(keys[e.key]){e.preventDefault();move(keys[e.key])}});
+window.addEventListener("resize",fit);fit();placeCroc();createItem();createSparks();
 </script>
 </body>
 </html>
