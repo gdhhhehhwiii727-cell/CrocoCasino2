@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07130e">
+  <title>CROCO CASINO</title>
+  <style>
+    :root {
+      --gold:#f3ca70;
+      --gold-light:#ffe7a1;
+      --green:#35c56b;
+      --bg:#07130e;
+      --panel:#11271a;
+      --text:#fffaf0;
+    }
+
+    * {
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      font-family:Tahoma,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 50% -10%,#2e6744 0,transparent 36%),
+        radial-gradient(circle at 0 90%,#45202a 0,transparent 35%),
+        linear-gradient(145deg,#0b1c12,#020503);
+    }
+
+    button {
+      font:inherit;
+      cursor:pointer;
+    }
+
+    .app {
+      width:min(100% - 20px,560px);
+      margin:auto;
+      padding:12px 0 24px;
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      min-height:72px;
+      padding:10px 12px;
+      border:1px solid #ffffff18;
+      border-radius:18px;
+      background:#09170fe8;
+      box-shadow:0 12px 35px #0007;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:9px;
+      min-width:0;
+    }
+
+    .logo {
+      display:grid;
+      width:54px;
+      height:54px;
+      flex:0 0 54px;
+      place-items:center;
+      border:2px solid var(--gold);
+      border-radius:16px;
+      background:linear-gradient(135deg,#45c76d 53%,#b92a3a 54%);
+      font-size:31px;
+      filter:drop-shadow(0 0 10px #35c56b55);
+    }
+
+    .brand-name {
+      color:var(--gold);
+      font-size:16px;
+      font-weight:900;
+      letter-spacing:.5px;
+      white-space:nowrap;
+    }
+
+    .brand-sub {
+      display:block;
+      margin-top:4px;
+      color:#b5cbbd;
+      font-size:9px;
+      letter-spacing:2px;
+    }
+
+    .points {
+      flex:0 0 auto;
+      padding:9px 11px;
+      border:1px solid #f3ca7055;
+      border-radius:13px;
+      background:#ffffff0a;
+      color:var(--gold-light);
+      direction:ltr;
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .points b {
+      color:#fff;
+      font-size:17px;
+    }
+
+    .heading {
+      padding:17px 4px 13px;
+      text-align:center;
+    }
+
+    .heading small {
+      color:#a9d5b3;
+      font-size:10px;
+      letter-spacing:3px;
+    }
+
+    .heading h1 {
+      margin:5px 0 0;
+      color:var(--gold);
+      font-size:clamp(25px,7vw,37px);
+      text-shadow:0 0 24px #f3ca7048;
+    }
+
+    .machine {
+      position:relative;
+      padding:13px;
+      border:2px solid #cba64e;
+      border-radius:24px;
+      background:linear-gradient(145deg,#21482f,#0a170f);
+      box-shadow:0 18px 45px #0009,inset 0 0 28px #f3ca7012;
+      overflow:hidden;
+    }
+
+    .machine-title {
+      margin:0 0 10px;
+      color:var(--gold-light);
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:3px;
+      text-align:center;
+    }
+
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:7px;
+      direction:ltr;
+    }
+
+    .cell {
+      display:flex;
+      aspect-ratio:.82;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:3px;
+      overflow:hidden;
+      border:1px solid #f3ca7044;
+      border-radius:12px;
+      background:
+        radial-gradient(circle at 50% 25%,#ffffff18,transparent 45%),
+        linear-gradient(145deg,#2a4d36,#09150f);
+      box-shadow:inset 0 0 14px #0008,0 3px 8px #0005;
+    }
+
+    .cell .icon {
+      font-size:clamp(23px,8vw,43px);
+      filter:drop-shadow(0 3px 5px #0009);
+      line-height:1;
+    }
+
+    .cell .label {
+      color:#cdded1;
+      font-size:clamp(8px,2vw,10px);
+    }
+
+    .cell.spinning {
+      animation:tumble .12s linear infinite;
+      filter:blur(1px);
+    }
+
+    .cell.winner {
+      z-index:1;
+      border-color:var(--gold-light);
+      animation:winner .5s ease-in-out infinite alternate;
+    }
+
+    .controls {
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:8px;
+      margin-top:16px;
+    }
+
+    .bet-control {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:6px;
+      border:1px solid #ffffff20;
+      border-radius:14px;
+      background:#ffffff0a;
+    }
+
+    .bet-control button {
+      width:34px;
+      height:34px;
+      border:0;
+      border-radius:10px;
+      color:var(--gold-light);
+      background:#ffffff12;
+      font-size:20px;
+    }
+
+    .bet-value {
+      min-width:48px;
+      text-align:center;
+    }
+
+    .bet-value b {
+      display:block;
+      font-size:15px;
+    }
+
+    .bet-value small {
+      color:#a9bcae;
+      font-size:9px;
+    }
+
+    .spin-button {
+      min-width:125px;
+      padding:13px 12px;
+      border:1px solid #ffe6a1;
+      border-radius:15px;
+      color:#281a05;
+      background:linear-gradient(#ffe69a,#cf9435);
+      box-shadow:0 5px 0 #805315,0 10px 22px #cf943538;
+      font-size:16px;
+      font-weight:900;
+    }
+
+    .spin-button:active:not(:disabled) {
+      transform:translateY(3px);
+      box-shadow:0 2px 0 #805315;
+    }
+
+    .spin-button:disabled {
+      cursor:wait;
+      opacity:.65;
+    }
+
+    .max-button {
+      height:48px;
+      border:1px solid #35c56b66;
+      border-radius:14px;
+      color:#bcecc9;
+      background:#1b673730;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .message {
+      min-height:50px;
+      padding:14px 5px 5px;
+      color:var(--gold-light);
+      font-size:14px;
+      font-weight:700;
+      text-align:center;
+    }
+
+    .paytable {
+      margin-top:8px;
+      padding:12px;
+      border:1px solid #ffffff18;
+      border-radius:16px;
+      background:#ffffff08;
+    }
+
+    .paytable h2 {
+      margin:0 0 9px;
+      color:var(--gold);
+      font-size:14px;
+    }
+
+    .pay-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:6px;
+    }
+
+    .pay-item {
+      padding:8px 3px;
+      border-radius:9px;
+      background:#0003;
+      color:#d7e4da;
+      font-size:9px;
+      text-align:center;
+    }
+
+    .pay-item strong {
+      display:block;
+      margin-bottom:3px;
+      font-size:18px;
+    }
+
+    .notice {
+      margin:12px 4px 0;
+      color:#94a89a;
+      font-size:9px;
+      line-height:1.7;
+      text-align:center;
+    }
+
+    @keyframes tumble {
+      0% { transform:translateY(-6px); }
+      50% { transform:translateY(6px); }
+      100% { transform:translateY(-6px); }
+    }
+
+    @keyframes winner {
+      to {
+        transform:scale(1.06);
+        box-shadow:0 0 18px #f3ca70aa,inset 0 0 14px #f3ca7040;
+      }
+    }
+
+    @media(max-width:390px) {
+      .app { width:calc(100% - 14px); }
+      .machine { padding:9px; }
+      .grid { gap:4px; }
+      .controls { gap:5px; }
+      .spin-button { min-width:108px; padding-inline:6px; }
+      .bet-control { padding:4px; }
+      .bet-control button { width:29px; height:32px; }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      .cell { animation:none!important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🐊</div>
+        <div>
+          <div class="brand-name">CROCO CASINO</div>
+          <span class="brand-sub">لعبة نقاط ترفيهية</span>
+        </div>
+      </div>
+      <div class="points">⭐ <b id="points">1000</b> نقطة</div>
+    </header>
+
+    <section class="heading">
+      <small>لعبة نقاط مجانية</small>
+      <h1>🌳 الشجرة الذهبية</h1>
+    </section>
+
+    <section class="machine" id="machine">
+      <p class="machine-title">✦ THE GOLDEN TREE ✦</p>
+      <div class="grid" id="grid" aria-label="شبكة اللعبة"></div>
+    </section>
+
+    <section class="controls">
+      <div class="bet-control">
+        <button id="downBet" type="button" aria-label="تقليل الرهان">−</button>
+        <div class="bet-value">
+          <b id="bet">10</b>
+          <small>نقاط/خط</small>
+        </div>
+        <button id="upBet" type="button" aria-label="زيادة الرهان">+</button>
+      </div>
+
+      <button class="spin-button" id="spin" type="button">
+        لفّ البكرات
+      </button>
+
+      <button class="max-button" id="maxBet" type="button">
+        أعلى رهان
+      </button>
+    </section>
+
+    <div class="message" id="message" aria-live="polite">
+      تكلفة الجولة: 50 نقطة
+    </div>
+
+    <section class="paytable">
+      <h2>جدول الرموز</h2>
+      <div class="pay-grid">
+        <div class="pay-item"><strong>🌳</strong>Wild — بديل</div>
+        <div class="pay-item"><strong>🏮</strong>Scatter — مكافأة</div>
+        <div class="pay-item"><strong>🪙</strong>عملة ذهبية</div>
+        <div class="pay-item"><strong>🐸</strong>ضفدع</div>
+        <div class="pay-item"><strong>🦅</strong>طائر</div>
+        <div class="pay-item"><strong>🌿</strong>غصن زيتون</div>
+      </div>
+    </section>
+
+    <p class="notice">
+      هذه نسخة ترفيهية بنقاط افتراضية محفوظة على هذا الجهاز فقط.
+      لا توجد إيداعات أو سحوبات أو جوائز مالية.
+    </p>
+  </main>
+
+  <script>
+    "use strict";
+
+    const START_POINTS = 1000;
+    const MIN_BET = 10;
+    const MAX_BET = 100;
+    const BET_STEP = 10;
+    const STORAGE_KEY = "croco-casino-points";
+
+    const symbols = {
+      TEN:     {icon:"🔟",label:"10",weight:12,pays:{3:2,4:5,5:12}},
+      JACK:    {icon:"🎴",label:"J",weight:12,pays:{3:2,4:5,5:12}},
+      QUEEN:   {icon:"👑",label:"Q",weight:11,pays:{3:3,4:7,5:18}},
+      KING:    {icon:"🃏",label:"K",weight:10,pays:{3:3,4:8,5:20}},
+      ACE:     {icon:"💎",label:"A",weight:9,pays:{3:4,4:10,5:25}},
+      OLIVE:   {icon:"🌿",label:"غصن",weight:8,pays:{3:5,4:15,5:40}},
+      FROG:    {icon:"🐸",label:"ضفدع",weight:7,pays:{3:6,4:20,5:55}},
+      COIN:    {icon:"🪙",label:"عملة",weight:6,pays:{3:8,4:25,5:75}},
+      BIRD:    {icon:"🦅",label:"طائر",weight:5,pays:{3:10,4:35,5:100}},
+      WILD:    {icon:"🌳",label:"Wild",weight:4,pays:{3:10,4:40,5:150}},
+      SCATTER: {icon:"🏮",label:"Scatter",weight:4,pays:{}}
+    };
+
+    const paylines = [
+      [0,0,0,0,0],
+      [1,1,1,1,1],
+      [2,2,2,2,2],
+      [0,1,2,1,0],
+      [2,1,0,1,2]
+    ];
+
+    const gridNode = document.getElementById("grid");
+    const pointsNode = document.getElementById("points");
+    const betNode = document.getElementById("bet");
+    const messageNode = document.getElementById("message");
+    const spinButton = document.getElementById("spin");
+    const machineNode = document.getElementById("machine");
+
+    let points = loadPoints();
+    let bet = MIN_BET;
+    let busy = false;
+
+    function loadPoints() {
+      try {
+        const saved = Number(localStorage.getItem(STORAGE_KEY));
+        return Number.isSafeInteger(saved) && saved >= 0
+          ? saved
+          : START_POINTS;
+      } catch {
+        return START_POINTS;
+      }
+    }
+
+    function savePoints() {
+      try {
+        localStorage.setItem(STORAGE_KEY,String(points));
+      } catch {}
+    }
+
+    function updateDisplay() {
+      pointsNode.textContent = points.toLocaleString("ar");
+      betNode.textContent = bet.toLocaleString("ar");
+      savePoints();
+    }
+
+    function randomSymbol() {
+      const entries = Object.entries(symbols);
+      const total = entries.reduce((sum,[,data]) => sum + data.weight,0);
+      let choice = Math.random() * total;
+
+      for (const [key,data] of entries) {
+        choice -= data.weight;
+        if (choice < 0) return key;
+      }
+
+      return entries[0][0];
+    }
+
+    function createGrid() {
+      return Array.from({length:3},() =>
+        Array.from({length:5},randomSymbol)
+      );
+    }
+
+    function drawGrid(grid) {
+      gridNode.replaceChildren();
+
+      for (let row=0;row<3;row++) {
+        for (let column=0;column<5;column++) {
+          const key = grid[row][column];
+          const data = symbols[key];
+          const cell = document.createElement("div");
+          const icon = document.createElement("span");
+          const label = document.createElement("span");
+
+          cell.className = "cell";
+          icon.className = "icon";
+          label.className = "label";
+          icon.textContent = data.icon;
+          label.textContent = data.label;
+
+          cell.append(icon,label);
+          gridNode.appendChild(cell);
+        }
+      }
+    }
+
+    function evaluateLine(line,grid,lineBet) {
+      const lineSymbols = line.map((row,column) =>
+        grid[row][column]
+      );
+
+      const target = lineSymbols.find(key =>
+        key !== "WILD" && key !== "SCATTER"
+      );
+
+      if (!target) {
+        return {win:0,positions:[]};
+      }
+
+      let count = 0;
+
+      for (const key of lineSymbols) {
+        if (key === target || key === "WILD") {
+          count++;
+        } else {
+          break;
+        }
+      }
+
+      const multiplier = symbols[target].pays[count] || 0;
+
+      if (!multiplier) {
+        return {win:0,positions:[]};
+      }
+
+      const positions = line
+        .slice(0,count)
+        .map((row,column) => row * 5 + column);
+
+      return {
+        win:lineBet * multiplier,
+        positions
+      };
+    }
+
+    function evaluateGrid(grid,lineBet) {
+      let total = 0;
+      const positions = new Set();
+      let lines = 0;
+
+      for (const line of paylines) {
+        const result = evaluateLine(line,grid,lineBet);
+
+        if (result.win > 0) {
+          total += result.win;
+          lines++;
+          result.positions.forEach(position =>
+            positions.add(position)
+          );
+        }
+      }
+
+      const scatterCount = grid
+        .flat()
+        .filter(key => key === "SCATTER")
+        .length;
+
+      let scatterBonus = 0;
+
+      if (scatterCount >= 3) {
+        scatterBonus = lineBet * scatterCount * 2;
+        total += scatterBonus;
+      }
+
+      return {total,positions,lines,scatterBonus};
+    }
+
+    function highlightPositions(positions) {
+      for (const position of positions) {
+        gridNode.children[position]?.classList.add("winner");
+      }
+    }
+
+    function wait(milliseconds) {
+      return new Promise(resolve =>
+        setTimeout(resolve,milliseconds)
+      );
+    }
+
+    async function spin() {
+      if (busy) return;
+
+      const cost = bet * paylines.length;
+
+      if (points < cost) {
+        messageNode.textContent =
+          `النقاط غير كافية. تحتاج ${cost} نقطة على الأقل.`;
+        return;
+      }
+
+      busy = true;
+      spinButton.disabled = true;
+
+      points -= cost;
+      updateDisplay();
+
+      messageNode.textContent =
+        `جاري التدوير... تكلفة الجولة ${cost} نقطة`;
+
+      drawGrid(createGrid());
+
+      [...gridNode.children].forEach(cell =>
+        cell.classList.add("spinning")
+      );
+
+      await wait(900);
+
+      const finalGrid = createGrid();
+      drawGrid(finalGrid);
+
+      const result = evaluateGrid(finalGrid,bet);
+
+      highlightPositions(result.positions);
+
+      if (result.total > 0) {
+        points += result.total;
+
+        let details = "";
+
+        if (result.lines > 0) {
+          details += ` — خطوط رابحة: ${result.lines}`;
+        }
+
+        if (result.scatterBonus > 0) {
+          details += ` — Scatter: ${result.scatterBonus}`;
+        }
+
+        messageNode.textContent =
+          `🎉 ربحت ${result.total} نقطة${details}`;
+      } else {
+        messageNode.textContent =
+          "لم تظهر توليفة رابحة هذه المرة";
+      }
+
+      updateDisplay();
+      spinButton.disabled = false;
+      busy = false;
+    }
+
+    document.getElementById("downBet").addEventListener("click",() => {
+      if (busy) return;
+      bet = Math.max(MIN_BET,bet - BET_STEP);
+      updateDisplay();
+      messageNode.textContent =
+        `تكلفة الجولة: ${bet * paylines.length} نقطة`;
+    });
+
+    document.getElementById("upBet").addEventListener("click",() => {
+      if (busy) return;
+      bet = Math.min(MAX_BET,bet + BET_STEP);
+      updateDisplay();
+      messageNode.textContent =
+        `تكلفة الجولة: ${bet * paylines.length} نقطة`;
+    });
+
+    document.getElementById("maxBet").addEventListener("click",() => {
+      if (busy) return;
+      bet = MAX_BET;
+      updateDisplay();
+      messageNode.textContent =
+        `أعلى رهان — تكلفة الجولة: ${bet * paylines.length} نقطة`;
+    });
+
+    spinButton.addEventListener("click",spin);
+
+    drawGrid(createGrid());
+    updateDisplay();
+  </script>
+</body>
+</html>Addindex.html
