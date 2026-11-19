@@ -1,17 +1,14 @@
 {
   "name": "مملكة تمساحي",
   "short_name": "تمساحي",
-  "description": "لعبة مغامرة ترفيهية بالنقاط الافتراضية",
+  "description": "لعبة مغامرة أركيد بتصميم عربي وأداء سلس",
   "lang": "ar",
   "dir": "rtl",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#07140e",
-  "theme_color": "#173c28",
-  "icons": [
-    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
-    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
-  ]
+  "background_color": "#06110c",
+  "theme_color": "#09261a",
+  "icons": [{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
 }

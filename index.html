@@ -2,58 +2,62 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#173c28">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#09261a">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <title>مملكة تمساحي</title>
   <style>
-    :root{--gold:#f7cf68;--green:#59cd7a;--text:#fffaf0}
-    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html,body{width:100%;height:100%;margin:0;overflow:hidden}
-    body{display:flex;justify-content:center;align-items:flex-start;font-family:Tahoma,Arial,sans-serif;color:var(--text);background:linear-gradient(160deg,#173c28,#07140e 58%,#160d10)}
+    :root{--gold:#ffd875;--green:#65df90;--panel:#0c2117cc;--text:#fffaf0}
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
+    html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#06110c;font-family:Tahoma,Arial,sans-serif;color:var(--text)}
+    body{display:flex;justify-content:center;align-items:flex-start}
     button{font:inherit;cursor:pointer}
-    .app{position:relative;width:1080px;height:1920px;padding:40px 50px 60px;overflow:hidden;background:radial-gradient(circle at 50% 26%,#316d48 0,#183b29 32%,transparent 58%),linear-gradient(145deg,#173b28,#07140e);transform-origin:top center}
-    .topbar{display:flex;align-items:center;justify-content:space-between;height:150px;padding:22px 28px;border:3px solid #ffffff1c;border-radius:44px;background:#08150fcc;box-shadow:0 20px 60px #0008}
-    .brand{display:flex;align-items:center;gap:22px}.logo{display:grid;width:104px;height:104px;place-items:center;border:4px solid var(--gold);border-radius:32px;background:linear-gradient(135deg,#67d58a,#22613a);font-size:64px}.name{color:var(--gold);font-size:38px;font-weight:900}.sub{margin-top:8px;color:#b7cfbe;font-size:20px;letter-spacing:4px}
-    .score{direction:ltr;padding:18px 24px;border:3px solid #f3ca704a;border-radius:28px;background:#ffffff0d;color:#e1ebdf;font-size:30px}.score b{color:white;font-size:44px}
-    .arena{position:relative;height:1270px;margin-top:36px;overflow:hidden;border:4px solid #dabd64;border-radius:52px;background:radial-gradient(circle at 50% 35%,#56895b 0,#224730 28%,#10251a 75%),linear-gradient(45deg,#1a3b28,#0b1b12);box-shadow:0 30px 90px #0009,inset 0 0 80px #f3ca7017}
-    .arena:before{content:"";position:absolute;inset:-30%;opacity:.11;background-image:linear-gradient(30deg,#fff 1px,transparent 1px),linear-gradient(-30deg,#fff 1px,transparent 1px);background-size:100px 100px}
-    .stage-label{position:absolute;top:30px;right:38px;z-index:3;color:#dfd0a2;font-size:22px;letter-spacing:3px}
-    .croc{position:absolute;z-index:4;display:grid;place-items:center;width:170px;height:170px;border:5px solid #9be0a8;border-radius:50px;font-size:118px;background:radial-gradient(circle at 38% 28%,#74d68e,#2f7747 70%,#19452d);box-shadow:0 22px 30px #0009,0 0 32px #67d68b55;transition:left .08s linear,top .08s linear}
-    .item{position:absolute;z-index:3;display:grid;place-items:center;width:120px;height:120px;border:4px solid #fff0aa;border-radius:50%;font-size:76px;background:radial-gradient(circle,#ffe998,#d29b36 67%,#7b5419);box-shadow:0 16px 28px #0009,0 0 38px #ffd66b88;animation:pulse 1s ease-in-out infinite alternate}
-    .spark{position:absolute;z-index:2;width:8px;height:8px;border-radius:50%;background:#fff3a5;box-shadow:0 0 18px #ffe66d;animation:float 2.8s linear infinite}
-    .controls{display:grid;grid-template-columns:repeat(3,170px);grid-template-rows:repeat(3,170px);justify-content:center;gap:16px;margin-top:28px}
-    .controls button{border:3px solid #ffffff24;border-radius:40px;color:#dfffe9;background:linear-gradient(145deg,#2a6443,#12291d);box-shadow:0 10px 0 #08120d,0 18px 38px #0007;font-size:64px}.controls button:active{transform:translateY(7px);box-shadow:0 3px 0 #08120d}
-    .controls button.up{grid-column:2}.controls button.left{grid-row:2;grid-column:1}.controls button.down{grid-row:2;grid-column:2}.controls button.right{grid-row:2;grid-column:3}.controls button.start{grid-row:3;grid-column:2;font-size:28px;color:#241905;border:3px solid #fff0aa;background:linear-gradient(#ffe99b,#ce9435);box-shadow:0 10px 0 #795213}
-    .message{position:absolute;right:50px;bottom:28px;left:50px;text-align:center;color:var(--gold);font-size:30px;font-weight:900;text-shadow:0 4px 12px #000}
-    @keyframes pulse{to{transform:scale(1.08);filter:brightness(1.15)}}@keyframes float{to{transform:translateY(-120px) rotate(360deg);opacity:0}}
+    .app{position:relative;width:1080px;height:1920px;overflow:hidden;padding:32px 44px 26px;transform-origin:top center;background:radial-gradient(circle at 50% 23%,#3a8258 0,#183e2a 31%,#09170f 68%,#07110c)}
+    .app:before{content:"";position:absolute;inset:0;opacity:.12;pointer-events:none;background-image:linear-gradient(30deg,#baffc7 1px,transparent 1px),linear-gradient(-30deg,#baffc7 1px,transparent 1px);background-size:72px 72px}
+    .topbar{position:relative;z-index:10;height:142px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;border:3px solid #ffffff18;border-radius:40px;background:linear-gradient(135deg,#10291dcc,#07140fe6);box-shadow:0 18px 44px #0008,inset 0 1px #ffffff12}
+    .brand{display:flex;align-items:center;gap:18px}.logo{width:102px;height:102px;display:grid;place-items:center;border:4px solid var(--gold);border-radius:31px;background:linear-gradient(135deg,#66d78e,#1e5d3c);font-size:62px;box-shadow:0 12px 22px #0007}.name{font-size:38px;font-weight:900;color:var(--gold)}.sub{margin-top:5px;font-size:19px;color:#bcdbca;letter-spacing:3px}
+    .stats{display:flex;direction:ltr;gap:12px}.stat{min-width:164px;height:92px;padding:10px 16px;border:2px solid #f7cf6844;border-radius:24px;background:#ffffff09;text-align:center}.stat span{display:block;font-size:18px;color:#b6cbbb}.stat b{display:block;margin-top:3px;font-size:34px;color:#fff}
+    .arena{position:relative;z-index:2;height:1325px;margin-top:28px;overflow:hidden;border:4px solid #dfbd62;border-radius:48px;background:linear-gradient(180deg,#326848 0%,#183f2b 42%,#0d2a1c 100%);box-shadow:0 28px 70px #0009,inset 0 0 90px #e2cc7211}
+    .arena:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.26;background:radial-gradient(circle at 15% 20%,#9bdb9d 0 3px,transparent 4px),radial-gradient(circle at 75% 66%,#6ec789 0 4px,transparent 5px);background-size:140px 160px}
+    .hud{position:absolute;z-index:8;top:18px;left:24px;right:24px;display:flex;justify-content:space-between;direction:ltr}.pill{height:58px;padding:10px 18px;border:2px solid #ffffff20;border-radius:20px;background:#06160ed9;font-size:26px;font-weight:900;direction:ltr}.pill.gold{color:var(--gold)}
+    .croc{position:absolute;z-index:5;width:148px;height:148px;display:grid;place-items:center;border:5px solid #aef0b9;border-radius:46px;background:radial-gradient(circle at 35% 25%,#93ecab,#3e9661 68%,#1d5639);font-size:104px;box-shadow:0 16px 30px #0009,0 0 28px #66d68a55;will-change:transform}
+    .object{position:absolute;z-index:4;display:grid;place-items:center;width:116px;height:116px;border:4px solid #fff0a3;border-radius:50%;font-size:72px;background:radial-gradient(circle,#fff1a7,#dfaa45 68%,#755019);box-shadow:0 13px 24px #0009,0 0 28px #ffe07788}
+    .object.enemy{border-color:#ffae9d;background:radial-gradient(circle,#ff9d83,#bd4c3f 68%,#62201a);box-shadow:0 13px 24px #0009,0 0 30px #ff6d5577}.object.shield{border-color:#91efff;background:radial-gradient(circle,#cefaff,#55bdd1 68%,#286778)}
+    .particle{position:absolute;z-index:7;width:12px;height:12px;border-radius:50%;background:#fff1a0;pointer-events:none}
+    .overlay{position:absolute;z-index:20;inset:0;display:none;place-items:center;direction:rtl;background:#06110ce6;backdrop-filter:blur(8px)}.overlay.show{display:grid}.card{width:760px;padding:48px 42px;border:4px solid #f4ca62;border-radius:44px;text-align:center;background:linear-gradient(145deg,#1d5033,#09180f);box-shadow:0 34px 90px #000}.card h2{margin:0 0 14px;font-size:56px;color:var(--gold)}.card p{font-size:30px;color:#d7e8dc}.card button{margin-top:20px;width:360px;height:112px;border:3px solid #fff0a1;border-radius:34px;color:#281a05;background:linear-gradient(#ffe99b,#c78a31);box-shadow:0 10px 0 #795213;font-size:36px;font-weight:900}
+    .controls{position:absolute;z-index:12;bottom:28px;left:50%;width:516px;height:248px;transform:translateX(-50%);display:grid;grid-template-columns:repeat(3,156px);grid-template-rows:repeat(2,112px);gap:16px;direction:ltr}.controls button{border:3px solid #ffffff25;border-radius:34px;color:#e2ffe9;background:linear-gradient(145deg,#326c4d,#10241a);box-shadow:0 8px 0 #08120d,0 16px 30px #0007;font-size:56px}.controls button:active{transform:translateY(5px);box-shadow:0 3px 0 #08120d}.controls .up{grid-column:2}.controls .left{grid-column:1;grid-row:2}.controls .down{grid-column:2;grid-row:2}.controls .right{grid-column:3;grid-row:2}
+    .message{position:absolute;z-index:11;right:80px;bottom:18px;font-size:24px;font-weight:800;color:#dceadf;text-shadow:0 3px 8px #000}
   </style>
 </head>
 <body>
-  <main class="app" id="app">
-    <header class="topbar"><div class="brand"><div class="logo">🐊</div><div><div class="name">مملكة تمساحي</div><div class="sub">لعبة مغامرة نقاط</div></div></div><div class="score">النقاط: <b id="score">0</b></div></header>
-    <section class="arena" id="arena"><div class="stage-label">المستنقع الذهبي</div><div class="croc" id="croc">🐊</div></section>
-    <nav class="controls" aria-label="أزرار الحركة"><button class="up" data-dir="up" type="button">▲</button><button class="left" data-dir="left" type="button">◀</button><button class="down" data-dir="down" type="button">▼</button><button class="right" data-dir="right" type="button">▶</button><button class="start" id="start" type="button">ابدأ التحدي</button></nav>
-    <div class="message" id="message">اجمع العملات الذهبية قبل انتهاء الوقت</div>
-  </main>
+<main class="app" id="app">
+  <header class="topbar"><div class="brand"><div class="logo">🐊</div><div><div class="name">مملكة تمساحي</div><div class="sub">المهمة الذهبية</div></div></div><div class="stats"><div class="stat"><span>النتيجة</span><b id="score">0</b></div><div class="stat"><span>أفضل نتيجة</span><b id="best">0</b></div></div></header>
+  <section class="arena" id="arena"><div class="hud"><div class="pill gold">★ <span id="timer">60</span></div><div class="pill">❤ <span id="lives">3</span></div></div><div class="croc" id="croc">🐊</div></section>
+  <nav class="controls" aria-label="التحكم"><button class="up" data-dir="up" aria-label="أعلى">▲</button><button class="left" data-dir="left" aria-label="يسار">◀</button><button class="down" data-dir="down" aria-label="أسفل">▼</button><button class="right" data-dir="right" aria-label="يمين">▶</button></nav>
+  <div class="message" id="message">أمسك العملات وتجنب الأعداء</div>
+  <div class="overlay" id="overlay"><div class="card"><h2 id="cardTitle">مملكة تمساحي</h2><p id="cardText">اجمع أكبر عدد من العملات خلال 60 ثانية</p><button id="start">ابدأ المغامرة</button></div></div>
+</main>
 <script>
 "use strict";
-const app=document.getElementById("app"),arena=document.getElementById("arena"),croc=document.getElementById("croc"),scoreNode=document.getElementById("score"),message=document.getElementById("message");
-let crocX=455,crocY=550,score=0,seconds=45,running=false,timer=null,item=null,sparks=[];
-function fit(){const scale=Math.min(innerWidth/1080,innerHeight/1920);app.style.transform=`scale(${scale})`;app.style.marginLeft=`${Math.max(0,(innerWidth-1080*scale)/2)}px`;app.style.position='relative'}
-function placeCroc(){croc.style.left=crocX+"px";croc.style.top=crocY+"px"}
-function createItem(){if(item)item.remove();item=document.createElement("div");item.className="item";item.textContent=["🪙","💎","⭐","🍀"][Math.floor(Math.random()*4)];item.style.left=Math.floor(40+Math.random()*870)+"px";item.style.top=Math.floor(100+Math.random()*1000)+"px";arena.appendChild(item)}
-function createSparks(){sparks.forEach(s=>s.remove());sparks=[];for(let i=0;i<18;i++){const s=document.createElement("i");s.className="spark";s.style.left=Math.floor(Math.random()*1060)+"px";s.style.bottom=Math.floor(Math.random()*280)+"px";s.style.animationDelay=(Math.random()*2)+"s";arena.appendChild(s);sparks.push(s)}}
-function move(dir){if(!running)return;const step=55;if(dir==="up")crocY-=step;if(dir==="down")crocY+=step;if(dir==="left")crocX-=step;if(dir==="right")crocX+=step;crocX=Math.max(20,Math.min(890,crocX));crocY=Math.max(100,Math.min(1080,crocY));placeCroc();checkItem()}
-function checkItem(){const ix=parseFloat(item.style.left),iy=parseFloat(item.style.top);if(Math.abs(crocX-ix)<120&&Math.abs(crocY-iy)<120){score+=10;scoreNode.textContent=score;message.textContent="رائع! جمعت "+score+" نقطة";createItem()}}
-function start(){clearInterval(timer);score=0;seconds=45;running=true;scoreNode.textContent="0";crocX=455;crocY=550;placeCroc();createItem();createSparks();message.textContent="الوقت المتبقي: 45 ثانية";timer=setInterval(()=>{seconds--;message.textContent="الوقت المتبقي: "+seconds+" ثانية";if(seconds<=0){clearInterval(timer);running=false;message.textContent="انتهى التحدي — مجموعك "+score+" نقطة"}},1000)}
-document.querySelectorAll("[data-dir]").forEach(b=>b.addEventListener("click",()=>move(b.dataset.dir)));document.getElementById("start").addEventListener("click",start);
-window.addEventListener("keydown",e=>{const keys={ArrowUp:"up",ArrowDown:"down",ArrowLeft:"left",ArrowRight:"right",w:"up",s:"down",a:"left",d:"right"};if(keys[e.key]){e.preventDefault();move(keys[e.key])}});
-window.addEventListener("resize",fit);fit();placeCroc();createItem();createSparks();
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}
+const app=document.getElementById('app'),arena=document.getElementById('arena'),croc=document.getElementById('croc'),scoreEl=document.getElementById('score'),bestEl=document.getElementById('best'),timerEl=document.getElementById('timer'),livesEl=document.getElementById('lives'),message=document.getElementById('message'),overlay=document.getElementById('overlay'),cardTitle=document.getElementById('cardTitle'),cardText=document.getElementById('cardText'),startButton=document.getElementById('start');
+const W=992,H=1325,CW=148,CH=148,STEP=330;
+let x=422,y=610,score=0,lives=3,time=60,running=false,last=0,spawnAcc=0,objects=[],keys={},invincible=0,best=0;
+try{best=Number(localStorage.getItem('croco-best')||0)||0}catch{};bestEl.textContent=best;
+function fit(){const s=Math.min(innerWidth/1080,innerHeight/1920);app.style.transform=`scale(${s})`;app.style.marginLeft=`${Math.max(0,(innerWidth-1080*s)/2)}px`}function place(){croc.style.transform=`translate(${x}px,${y}px)`}
+function spawn(){const r=Math.random(),kind=r<.28?'enemy':r<.43?'shield':'coin';const el=document.createElement('div');el.className='object '+(kind==='enemy'?'enemy':kind==='shield'?'shield':'');el.textContent=kind==='enemy'?'🐊':kind==='shield'?'🛡️':['🪙','💎','⭐','🍀'][Math.floor(Math.random()*4)];const ox=70+Math.random()*806,oy=100+Math.random()*1120;el.style.transform=`translate(${ox}px,${oy}px)`;el.dataset.type=kind;arena.appendChild(el);objects.push({el,x:ox,y:oy})}
+function burst(px,py){for(let i=0;i<10;i++){const p=document.createElement('i');p.className='particle';p.style.left=(px+58)+'px';p.style.top=(py+58)+'px';arena.appendChild(p);const a=i/10*Math.PI*2,d=100+Math.random()*140;p.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px) scale(.2)`,opacity:0}],{duration:650,easing:'ease-out'}).finished.then(()=>p.remove())}}
+function overlaps(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y}
+function end(win=false){running=false;clearInterval(timerInt);for(const o of objects)o.el.remove();objects=[];if(score>best){best=score;try{localStorage.setItem('croco-best',String(best))}catch{};bestEl.textContent=best}cardTitle.textContent=win?'مهمة مكتملة!':'انتهت المغامرة';cardText.textContent=`النتيجة: ${score} — أفضل نتيجة: ${best}`;startButton.textContent='العب مرة أخرى';overlay.classList.add('show')}
+let timerInt=null;
+function start(){for(const o of objects)o.el.remove();objects=[];score=0;lives=3;time=60;x=422;y=610;invincible=0;scoreEl.textContent='0';livesEl.textContent='3';timerEl.textContent='60';message.textContent='أمسك العملات وتجنب الأعداء';place();overlay.classList.remove('show');running=true;last=performance.now();for(let i=0;i<7;i++)spawn();clearInterval(timerInt);timerInt=setInterval(()=>{if(!running)return;time--;timerEl.textContent=time;if(time<=0)end(true)},1000);requestAnimationFrame(loop)}
+function loop(now){if(!running)return;const dt=Math.min((now-last)/1000,.035);last=now;let dx=(keys.ArrowRight||keys.d?1:0)-(keys.ArrowLeft||keys.a?1:0),dy=(keys.ArrowDown||keys.s?1:0)-(keys.ArrowUp||keys.w?1:0);if(dx&&dy){dx*=.707;dy*=.707}x=Math.max(0,Math.min(W-CW,x+dx*STEP*dt));y=Math.max(80,Math.min(H-CH,y+dy*STEP*dt));place();invincible=Math.max(0,invincible-dt);spawnAcc+=dt;if(spawnAcc>1.05){spawnAcc=0;if(objects.length<11)spawn()}const cr={x,y,w:CW,h:CH};for(let i=objects.length-1;i>=0;i--){const o=objects[i],r={x:o.x,y:o.y,w:116,h:116};if(overlaps(cr,r)){const type=o.el.dataset.type;if(type==='enemy'){if(invincible<=0){lives--;livesEl.textContent=lives;invincible=1.5;burst(o.x,o.y);o.el.remove();objects.splice(i,1);message.textContent='اصطدمت! احذر الأعداء';if(lives<=0){end(false);return}}}else if(type==='shield'){invincible=4;score+=5;scoreEl.textContent=score;burst(o.x,o.y);message.textContent='درع حماية نشط';o.el.remove();objects.splice(i,1)}else{score+=10;scoreEl.textContent=score;burst(o.x,o.y);message.textContent='جميل! عملة ذهبية';o.el.remove();objects.splice(i,1)}}}croc.style.filter=invincible>0?'brightness(1.25) drop-shadow(0 0 18px #77eaff)':'none';requestAnimationFrame(loop)}
+function moveDir(dir,active){keys[dir==='left'?'ArrowLeft':dir==='right'?'ArrowRight':dir==='up'?'ArrowUp':'ArrowDown']=active}
+document.querySelectorAll('[data-dir]').forEach(b=>{const dir=b.dataset.dir;b.addEventListener('pointerdown',e=>{e.preventDefault();moveDir(dir,true)});b.addEventListener('pointerup',()=>moveDir(dir,false));b.addEventListener('pointerleave',()=>moveDir(dir,false));b.addEventListener('pointercancel',()=>moveDir(dir,false))});
+window.addEventListener('keydown',e=>{const k=e.key.toLowerCase();if(['arrowup','arrowdown','arrowleft','arrowright','w','a','s','d',' '].includes(k))e.preventDefault();keys[k==='arrowup'?'ArrowUp':k==='arrowdown'?'ArrowDown':k==='arrowleft'?'ArrowLeft':k==='arrowright'?'ArrowRight':k]=true});window.addEventListener('keyup',e=>{const k=e.key.toLowerCase();keys[k==='arrowup'?'ArrowUp':k==='arrowdown'?'ArrowDown':k==='arrowleft'?'ArrowLeft':k==='arrowright'?'ArrowRight':k]=false});
+startButton.addEventListener('click',start);window.addEventListener('resize',fit);fit();place();overlay.classList.add('show');if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 </script>
 </body>
 </html>
